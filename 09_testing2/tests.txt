@@ -1,0 +1,44 @@
+aaaaa bbbbb
+aaaab bbbba
+
+aaaa bbbb
+a./;, bbbbb
+a bbbbbbb
+"\n" bbb
+bbbbbbbbbbb
+231
+9999 9999999999
+-1 1
+babab ababa
+hello how are
+
+12345 54321
+999999999999999999999 999999999999999
+-999999999999999999999999 -99999999999999999999
+-1 1
+
+: 1
+abaaa abaaaa
+aaaaa aaaaa
+aaaaa aaaaaa
+aaaab bbbba
+aaaba bbbab
+aaaa aaaa
+a
+aaa baacd
+abcde abcde
+/n /n
+
+aaaaa  bbbbb
+aaa aaa
+aaa   aaa
+AAAAA AAAAA
+BBBBB AAAAA
+abbba baaab
+______________
+ffffff fffff
+ffff fffff
+fff ffff
+
+abaac abacd
+aaabc aaab
