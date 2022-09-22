@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+#include "cards.h"
+
+void assert_card_valid(card_t c) {
+  assert((c.value >= '2' && c.value <= '9') || (c.value == '0' || 'J' || 'Q' || 'K' || 'A'));
+  assert(c.suit == 's' || 'h' || 'd' || 'c');
+  assert(c.value != 0);
+  assert(c.value != 1);
+  assert(c.suit < 4);
+
+}
+
+const char * ranking_to_string(hand_ranking_t r) {
+  char * rank = "__";
+  switch(r){
+  case STRAIGHT_FLUSH: rank = "STRAIGHT_FLUSH"; break;
+  case FOUR_OF_A_KIND: rank = "FOUR_OF_A_KIND"; break;
+  case FULL_HOUSE: rank = "FULL_HOUSE"; break;
+  case FLUSH: rank = "FLUSH"; break;
+  case STRAIGHT: rank = "STRAIGHT"; break;
+  case THREE_OF_A_KIND: rank = "THREE_OF_A_KIND"; break;
+  case TWO_PAIR: rank = "TWO_PAIR"; break;
+  case PAIR: rank = "PAIR"; break;
+  case NOTHING: rank = "NOTHING"; break;
+  }
+  return rank;
+  }
+
+char value_letter(card_t c) {
+  int val = '*';
+  switch(c.value){
+  case 2: val = '2'; break;
+  case 3: val = '3'; break;
+  case 4: val = '4'; break;
+  case 5: val = '5'; break;
+  case 6: val = '6'; break;
+  case 7: val = '7'; break;
+  case 8: val = '8'; break;
+  case 9: val = '9'; break;
+  case 10: val = '0'; break;
+  case VALUE_JACK: val = 'J'; break;
+  case VALUE_QUEEN: val = 'Q'; break;
+  case VALUE_KING: val = 'K'; break;
+  case VALUE_ACE: val = 'A'; break;
+  }
+  return val;
+}
+char suit_letter(card_t c) {
+  char suit = '_';
+  switch(c.suit){
+  case SPADES: suit = 's'; break;
+  case HEARTS: suit = 'h'; break;
+  case DIAMONDS: suit = 'd'; break;
+  case CLUBS: suit = 'c'; break;
+  case NUM_SUITS: suit = '4'; break;
+  }
+  return suit;
+}
+
+void print_card(card_t c) {
+  printf("%c%c",value_letter(c),suit_letter(c));
+}
+
+card_t card_from_letters(char value_let, char suit_let) {
+  card_t temp;
+  switch(suit_let){
+  case 's': temp.suit = SPADES; break;
+  case 'h': temp.suit = HEARTS; break;
+  case 'd': temp.suit = DIAMONDS; break;
+  case 'c': temp.suit = CLUBS; break;
+  case '4': temp.suit = NUM_SUITS; break;
+  }
+  switch(value_let){
+  case '2': temp.value = 2; break;
+  case '3': temp.value = 3; break;
+  case '4': temp.value = 4; break;
+  case '5': temp.value = 5; break;
+  case '6': temp.value = 6; break;
+  case '7': temp.value = 7; break;
+  case '8': temp.value = 8; break;
+  case '9': temp.value = 9; break;
+  case '0': temp.value = 10; break;
+  case 'J': temp.value = VALUE_JACK; break;
+  case 'Q': temp.value = VALUE_QUEEN; break;
+  case 'K': temp.value = VALUE_KING; break;
+  case 'A': temp.value = VALUE_ACE; break;
+  }
+  return temp;
+}
+
+card_t card_from_num(unsigned c) {
+  card_t temp;
+  temp.value = (c % 13) + 2;
+  temp.suit = c / 13;
+  //temp.suit = suit_letter(temp);
+  //temp.value = value_letter(temp);
+  //assert_card_valid(temp);
+  return temp;
+}
